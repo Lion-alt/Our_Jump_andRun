@@ -2,6 +2,7 @@ package ch.bbw.gameboy;
 
 import ch.bbw.gameboy.api.*;
 import ch.bbw.gameboy.gameobjects.Ground;
+import ch.bbw.gameboy.gameobjects.Logo;
 import ch.bbw.gameboy.gameobjects.Smiley;
 import ch.bbw.gameboy.gameobjects.Wall;
 import ch.bbw.gameboy.impl.*;
@@ -10,6 +11,9 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import static ch.bbw.gameboy.api.ButtonController.GameButton.RIGHT;
+import static ch.bbw.gameboy.api.ButtonController.GameButton.SPACE;
 
 /**
  * Anchor point for the graphic {@link #tick()} and the user-interaction {@link #onButtonPress(GameButton)}.
@@ -26,6 +30,12 @@ public class GameLogic implements ButtonController {
 
     private Integer color;
     private Smiley smiley;
+    private Smiley smiley2;
+    private boolean onStartPosition = false;
+    private boolean isRightButtonClicked = false;
+    private boolean isSpaceButtonClicked = false;
+    private boolean isFirstSpace = true;
+    private boolean isFirstRightButton = true;
     private CopyOnWriteArrayList<Ground> grounds = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<Wall> walls = new CopyOnWriteArrayList<>();
 
@@ -50,7 +60,51 @@ public class GameLogic implements ButtonController {
         starfield.draw();
 
 
-        smiley = new Smiley(graphic, 30, 80);
+        // Instant important Variables
+
+        int actX = 0;
+        int actY = 0;
+
+        // Create a Logo
+
+        Logo logo = new Logo(graphic, 25, 30);
+        Logo logo1 = new Logo(graphic, 33, 30);
+        Logo logo2 = new Logo(graphic, 17, 30);
+        Logo logo3 = new Logo(graphic, 25, 22);
+        Logo logo4 = new Logo(graphic, 25, 38);
+
+        // Place first Smiley
+        if (!onStartPosition) {
+            smiley = new Smiley(graphic, 30, 80);
+            // onStartPosition = true;
+        }
+
+
+        if (isRightButtonClicked) {
+            /*if (isFirstRightButton) {
+                actX = smiley.getPositionX() + 3;
+                actY = smiley.getPositionY() - 7;
+                isFirstRightButton = false;
+            }*/
+            actX = smiley.getPositionX() + 3;
+            actY = smiley.getPositionY() - 7;
+            Smiley smiley2 = new Smiley(graphic, actX, actY, RIGHT);
+            // isRightButtonClicked = false;
+        }
+
+        if (isSpaceButtonClicked) {
+            /*if (isFirstSpace) {
+                actX = smiley.getPositionX() + 3;
+                actY = smiley.getPositionY() - 15;
+                isFirstSpace = false;
+            }*/
+            actX = smiley.getPositionX() + 3;
+            actY = smiley.getPositionY() - 15;
+            Smiley smiley3 = new Smiley(graphic, actX, actY, SPACE);
+
+            // isSpaceButtonClicked = false;
+        }
+
 
         // Create a ground line
         for (int x = 0; x < 155; x += 8) {
@@ -85,14 +139,19 @@ public class GameLogic implements ButtonController {
     public void onButtonPress(ButtonController.GameButton button) {
         // TODO How can I draw a new sprite 3 pixels apart from the existing one and delete the existing one?
         switch (button) {
-            case RIGHT -> smiley = new Smiley(graphic, smiley.getPositionX() + 10, smiley.getPositionY());
-            case DOWN -> smiley = new Smiley(graphic, smiley.getPositionX(), smiley.getPositionY() + 10);
-            case SPACE -> smiley = new Smiley(graphic, smiley.getPositionX() + 8, smiley.getPositionY() - 10);
+            case RIGHT -> smiley = new Smiley(graphic, smiley.getPositionX() + 8, smiley.getPositionY(), button);
+            case SPACE -> smiley = new Smiley(graphic, smiley.getPositionX() + 8, smiley.getPositionY() - 8, button);
         }
     }
 
     @Override
     public void onButtonRelease(ButtonController.GameButton button2) {
+        switch (button2) {
+            case RIGHT -> isRightButtonClicked = true;
+            case SPACE -> isSpaceButtonClicked = true;
+        }
         tick();
     }
+
+
 }
