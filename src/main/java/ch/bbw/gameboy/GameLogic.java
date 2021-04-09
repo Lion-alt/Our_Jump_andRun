@@ -20,8 +20,6 @@ import static ch.bbw.gameboy.api.ButtonController.GameButton.SPACE;
  */
 public class GameLogic implements ButtonController {
 
-
-    // TODO Spielelemente designen(Spielfigur, Blöcke in der Luft, Boden, usw..
     // TODO KeyEvents einbinden
 
     private final PixelGraphic graphic;
@@ -76,7 +74,7 @@ public class GameLogic implements ButtonController {
         // Place first Smiley
         if (!onStartPosition) {
             smiley = new Smiley(graphic, 30, 80);
-            // onStartPosition = true;
+            //onStartPosition = true;
         }
 
 
