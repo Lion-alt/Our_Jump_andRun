@@ -18,7 +18,7 @@ import ch.bbw.gameboy.api.PixelGraphic;
 
 public class GameBbwoy {
 
-	public static final int FPS = 30;
+	public static final int FPS = 60;
 
 	public static final int DISPLAY_WIDTH = 160;
 
@@ -90,6 +90,7 @@ public class GameBbwoy {
 				throw new IllegalArgumentException(name + "=" + value + " should be between 0 and " + max + " (exclusive)");
 			}
 		}
+
 
 		@Override
 		public int getPixelWidth() {
