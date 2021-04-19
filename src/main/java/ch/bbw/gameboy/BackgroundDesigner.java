@@ -7,7 +7,7 @@ import ch.bbw.gameboy.gameobjects.Wall;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class BackdgroundDesigner {
+public class BackgroundDesigner {
 
 
     public void draw(PixelGraphic graphic, CopyOnWriteArrayList<Wall> walls, CopyOnWriteArrayList<Ground> grounds) {
@@ -43,7 +43,8 @@ public class BackdgroundDesigner {
         walls.add(new Wall(graphic, 120, 40));
         walls.add(new Wall(graphic, 130, 32));
         walls.add(new Wall(graphic, 140, 32));
-        walls.add(new Wall(graphic, 150, 32));// Create a ground line
+        walls.add(new Wall(graphic, 150, 32));
+        // Create a ground line
         for (int x = 0; x < 155; x += 8) {
             for (int y = 96; y < 128; y += 32) {
                 if (x == 0) {

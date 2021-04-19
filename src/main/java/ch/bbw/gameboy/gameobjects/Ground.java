@@ -27,7 +27,7 @@ public class Ground extends GameObject {
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
         );
-        // Draw in Parent Class GameOBject
+        // Draw in Parent Class GameObject
         super.draw(ground_data, graphic, x2, y2);
     }
 }

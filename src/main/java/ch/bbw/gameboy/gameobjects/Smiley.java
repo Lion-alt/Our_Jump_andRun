@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Smiley extends GameObject {
 
-
     private final PixelGraphic graphic;
     private int positionX;
     private int positionY;
@@ -54,32 +53,6 @@ public class Smiley extends GameObject {
                 0, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0)
         );
-    }
-
-    // Other Constructor for better creating of new Smileys after KeyEvents
-    public Smiley(PixelGraphic graphic, int x2, int y2, ButtonController.GameButton button) {
-        this.graphic = graphic;
-        smiley_data = List.of(List.of(
-                0, 1, 1, 1, 1, 1, 1, 0,
-                1, 0, 0, 0, 0, 0, 0, 1,
-                1, 0, 1, 0, 0, 1, 0, 1,
-                1, 0, 0, 0, 0, 0, 0, 1,
-                1, 0, 1, 0, 0, 1, 0, 1,
-                1, 0, 0, 1, 1, 0, 0, 1,
-                1, 0, 0, 0, 0, 0, 0, 1,
-                0, 1, 1, 1, 1, 1, 1, 0
-                ), List.of(0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0)
-        );
-        switch (button) {
-            case RIGHT, SPACE -> new Smiley(graphic, x2, y2);
-        }
     }
 
     public void draw() {
