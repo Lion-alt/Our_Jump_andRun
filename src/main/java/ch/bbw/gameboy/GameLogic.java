@@ -33,6 +33,10 @@ public class GameLogic implements ButtonController {
         backdgroundDesigner.draw(graphic, walls, grounds);
         spriteMover.tick(smiley);
         smiley.draw();
+        // If the Player has won
+        if(smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
+            backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
+        }
     }
 
 

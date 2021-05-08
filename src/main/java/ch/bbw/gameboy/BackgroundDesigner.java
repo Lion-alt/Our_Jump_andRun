@@ -71,4 +71,12 @@ public class BackgroundDesigner {
         walls.add(new Wall(graphic, 140, 32));
         walls.add(new Wall(graphic, 150, 32));
     }
+
+    public void drawLogoTwiceForTheWin(PixelGraphic graphic) {
+        Logo logo = new Logo(graphic, 55, 30);
+        Logo logo1 = new Logo(graphic, 63, 30);
+        Logo logo2 = new Logo(graphic, 47, 30);
+        Logo logo3 = new Logo(graphic, 55, 22);
+        Logo logo4 = new Logo(graphic, 55, 38);
+    }
 }
