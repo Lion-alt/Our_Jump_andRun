@@ -53,9 +53,38 @@ public class SpriteMover {
                 case 4, 15, 26 -> yVelocity = 0.8;
                 case 5, 16, 27 -> yVelocity = 0.3;
                 case 6, 7, 8, 9, 10, 17, 18, 19, 20, 21, 28, 29 -> yVelocity = 0;
-                case 11, 22, 30, 32, 34, 36 -> yVelocity = -0.8;
-                case 31, 33, 35, 37 -> yVelocity = 7.5;
+                case 11, 22, 30, 32 -> yVelocity = -0.8;
+                case 31, 34  -> yVelocity = 10;
+                case 35 -> {
+                    yVelocity = 0;
+                    xVelocity = 5.5;
+                }
+                case 36 -> {
+                    xVelocity = 2.7;
+                }
+                case 37 -> {
+                    yVelocity = -2;
+
+                }
+                case 33 -> {
+                    yVelocity = -2;
+                    xVelocity = 0;
+                }
+
                 case 38 -> {
+                    yVelocity = 0;
+                    xVelocity = 1.5;
+                }
+                case 39 -> {
+                    yVelocity = 15;
+                }
+                case 40 -> xVelocity = 5.5;
+                case 41 -> yVelocity = -9.5;
+                case 42 -> {
+                    xVelocity = 5.5;
+                    yVelocity = -5.5;
+                }
+                case 43 -> {
                     yVelocity = -0.8;
                     spaceClickCounter = 0;
                 }

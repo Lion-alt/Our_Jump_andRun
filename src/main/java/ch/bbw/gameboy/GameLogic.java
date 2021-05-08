@@ -18,6 +18,7 @@ public class GameLogic implements ButtonController {
     private SpriteMover spriteMover = new SpriteMover();
     private CopyOnWriteArrayList<Ground> grounds = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<Wall> walls = new CopyOnWriteArrayList<>();
+    private boolean isGameWon = false;
 
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
@@ -31,11 +32,14 @@ public class GameLogic implements ButtonController {
     public void tick() {
         graphic.clear();
         backdgroundDesigner.draw(graphic, walls, grounds);
-        spriteMover.tick(smiley);
+        if(!isGameWon) {
+            spriteMover.tick(smiley);
+        }
         smiley.draw();
         // If the Player has won
         if(smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
             backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
+            isGameWon = true;
         }
     }
 
@@ -55,6 +59,11 @@ public class GameLogic implements ButtonController {
             case SPACE -> spriteMover.setSpaceButtonClicked(false);
         }
     }
+
+    public boolean isGameWon() {
+        return isGameWon;
+    }
+
 
 
 }
