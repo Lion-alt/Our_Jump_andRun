@@ -12,20 +12,11 @@ public class SpriteMover {
     private boolean isSpaceButtonClicked = false;
     private int spaceClickCounter = 0;
     private int rightClickCounter = 0;
+    private int actX = 0;
+    private int actY = 0;
 
-    public void setRightButtonClicked(boolean rightButtonClicked) {
-        isRightButtonClicked = rightButtonClicked;
-    }
-
-    public void setSpaceButtonClicked(boolean spaceButtonClicked) {
-        isSpaceButtonClicked = spaceButtonClicked;
-    }
 
     public void tick(Smiley smiley) {
-
-        int actX = 0;
-        int actY = 0;
-
         if (isRightButtonClicked) {
             rightClickCounter++;
             switch(rightClickCounter) {
@@ -88,8 +79,6 @@ public class SpriteMover {
                     yVelocity = -0.8;
                     spaceClickCounter = 0;
                 }
-
-
             }
 
 
@@ -101,4 +90,36 @@ public class SpriteMover {
             isSpaceButtonClicked = false;
         }
     }
+
+    public void setRightButtonClicked(boolean rightButtonClicked) {
+        isRightButtonClicked = rightButtonClicked;
+    }
+
+    public void setSpaceButtonClicked(boolean spaceButtonClicked) {
+        isSpaceButtonClicked = spaceButtonClicked;
+    }
+
+    public boolean isRightButtonClicked() {
+        return isRightButtonClicked;
+    }
+
+    public boolean isSpaceButtonClicked() {
+        return isSpaceButtonClicked;
+    }
+
+
+    public int getRightClickCounter() {
+        return rightClickCounter;
+    }
+
+    public int getActX() {
+        return actX;
+    }
+
+    public int getActY() {
+        return actY;
+    }
+
+
+
 }

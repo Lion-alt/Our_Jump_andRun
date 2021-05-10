@@ -5,6 +5,7 @@ import ch.bbw.gameboy.gameobjects.Ground;
 import ch.bbw.gameboy.gameobjects.Smiley;
 import ch.bbw.gameboy.gameobjects.Wall;
 import ch.bbw.gameboy.impl.*;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -29,15 +30,17 @@ public class GameLogic implements ButtonController {
         GameBbwoy.main(args); // just here for a convenient button
     }
 
+    // TODO Startscreen machen mit Logo (mit Space kommt man auf den GameScreen)
+
     public void tick() {
         graphic.clear();
         backdgroundDesigner.draw(graphic, walls, grounds);
-        if(!isGameWon) {
+        if (!isGameWon) {
             spriteMover.tick(smiley);
         }
         smiley.draw();
         // If the Player has won
-        if(smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
+        if (smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
             backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
             isGameWon = true;
         }
@@ -64,6 +67,8 @@ public class GameLogic implements ButtonController {
         return isGameWon;
     }
 
-
+    public void setGameWon(boolean gameWon) {
+        isGameWon = gameWon;
+    }
 
 }
