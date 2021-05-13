@@ -23,7 +23,8 @@ public interface ButtonController {
 		UP,
 		DOWN,
 		SPACE,
-		CTRL
+		CTRL,
+		ENTER
 	}
 
 }

@@ -34,16 +34,23 @@ public class GameLogic implements ButtonController {
 
     public void tick() {
         graphic.clear();
-        backdgroundDesigner.draw(graphic, walls, grounds);
-        if (!isGameWon) {
-            spriteMover.tick(smiley);
+        if(!spriteMover.isEnterButtonClicked()) {
+            backdgroundDesigner.draw(graphic, walls, grounds);
+            backdgroundDesigner.drawStartText(graphic);
         }
-        smiley.draw();
-        // If the Player has won
-        if (smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
-            backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
-            isGameWon = true;
+        if(spriteMover.isEnterButtonClicked()) {
+            backdgroundDesigner.draw(graphic, walls, grounds);
+            if (!isGameWon) {
+                spriteMover.tick(smiley);
+            }
+            smiley.draw();
+            // If the Player has won
+            if (smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
+                backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
+                isGameWon = true;
+            }
         }
+
     }
 
 
@@ -52,6 +59,7 @@ public class GameLogic implements ButtonController {
         switch (button) {
             case RIGHT -> spriteMover.setRightButtonClicked(true);
             case SPACE -> spriteMover.setSpaceButtonClicked(true);
+            case ENTER -> spriteMover.setEnterButtonClicked(true);
         }
     }
 

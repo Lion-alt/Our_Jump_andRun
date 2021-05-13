@@ -14,6 +14,7 @@ public class SpriteMover {
     private int rightClickCounter = 0;
     private int actX = 0;
     private int actY = 0;
+    private boolean enterButtonClicked = false;
 
 
     public void tick(Smiley smiley) {
@@ -121,5 +122,11 @@ public class SpriteMover {
     }
 
 
+    public void setEnterButtonClicked(boolean enterButtonClicked) {
+        this.enterButtonClicked = enterButtonClicked;
+    }
 
+    public boolean isEnterButtonClicked() {
+        return enterButtonClicked;
+    }
 }

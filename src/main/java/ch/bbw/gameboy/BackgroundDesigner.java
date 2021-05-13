@@ -1,10 +1,10 @@
 package ch.bbw.gameboy;
 
 import ch.bbw.gameboy.api.PixelGraphic;
-import ch.bbw.gameboy.gameobjects.GameObject;
 import ch.bbw.gameboy.gameobjects.Ground;
-import ch.bbw.gameboy.gameobjects.Logo;
+import ch.bbw.gameboy.startobjects.Logo;
 import ch.bbw.gameboy.gameobjects.Wall;
+import ch.bbw.gameboy.startobjects.StartText;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -63,5 +63,13 @@ public class BackgroundDesigner {
         Logo logo2 = new Logo(graphic, 47, 30);
         Logo logo3 = new Logo(graphic, 55, 22);
         Logo logo4 = new Logo(graphic, 55, 38);
+    }
+
+    public void drawStartText(PixelGraphic graphic) {
+        StartText startText = new StartText(graphic, 80, 30);
+        StartText startText1 = new StartText(graphic, 90, 30);
+        StartText startText2 = new StartText(graphic, 90, 20);
+        StartText startText3 = new StartText(graphic, 90, 40);
+        StartText startText4 = new StartText(graphic, 100, 30);
     }
 }
