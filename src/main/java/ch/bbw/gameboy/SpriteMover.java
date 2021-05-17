@@ -1,6 +1,5 @@
 package ch.bbw.gameboy;
 
-import ch.bbw.gameboy.api.PixelGraphic;
 import ch.bbw.gameboy.gameobjects.Smiley;
 
 public class SpriteMover {

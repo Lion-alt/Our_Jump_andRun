@@ -30,7 +30,7 @@ public class GameBbwoy {
         var display = new SwingDisplay(DISPLAY_WIDTH, DISPLAY_HEIGHT);
         var logic = new GameLogic(display);
         SwingUtilities.invokeLater(() -> {
-            var mainWindow = new JFrame("GameBbwoy");
+            var mainWindow = new JFrame("Super Smile Boy Easy Mode");
             mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             mainWindow.setLocationRelativeTo(null);
             mainWindow.setContentPane(display);

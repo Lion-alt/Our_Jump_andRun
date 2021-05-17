@@ -16,7 +16,7 @@ class BackgroundDesignerTest {
         GameLogic gameLogic = new GameLogic(graphic);
         gameLogic.setGameWon(true);
         if(gameLogic.isGameWon()) {
-            backgroundDesigner.drawLogoTwiceForTheWin(graphic);
+            backgroundDesigner.drawLogoTwiceForTheWin();
         }
         assertTrue(gameLogic.isGameWon());
     }

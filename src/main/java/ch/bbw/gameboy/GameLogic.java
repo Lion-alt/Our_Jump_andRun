@@ -15,7 +15,7 @@ public class GameLogic implements ButtonController {
 
     private final PixelGraphic graphic;
     private final Smiley smiley;
-    private BackgroundDesigner backdgroundDesigner = new BackgroundDesigner();
+    private BackgroundDesigner backdgroundDesigner;
     private SpriteMover spriteMover = new SpriteMover();
     private CopyOnWriteArrayList<Ground> grounds = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<Wall> walls = new CopyOnWriteArrayList<>();
@@ -24,33 +24,36 @@ public class GameLogic implements ButtonController {
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
         smiley = new Smiley(graphic, 30, 80);
+        backdgroundDesigner = new BackgroundDesigner(graphic, walls, grounds, spriteMover);
     }
 
     public static void main(String[] args) throws Throwable {
         GameBbwoy.main(args); // just here for a convenient button
     }
 
-    // TODO Startscreen machen mit Logo (mit Space kommt man auf den GameScreen)
-
     public void tick() {
         graphic.clear();
         if(!spriteMover.isEnterButtonClicked()) {
-            backdgroundDesigner.draw(graphic, walls, grounds);
-            backdgroundDesigner.drawStartText(graphic);
+            backdgroundDesigner.draw();
+            backdgroundDesigner.drawStartText();
         }
         if(spriteMover.isEnterButtonClicked()) {
-            backdgroundDesigner.draw(graphic, walls, grounds);
+            backdgroundDesigner.draw();
             if (!isGameWon) {
                 spriteMover.tick(smiley);
             }
             smiley.draw();
             // If the Player has won
-            if (smiley.getPositionX() == 150 && smiley.getPositionY() == 24) {
-                backdgroundDesigner.drawLogoTwiceForTheWin(graphic);
+            if (winCondition()) {
+                backdgroundDesigner.drawLogoTwiceForTheWin();
                 isGameWon = true;
             }
         }
 
+    }
+
+    private boolean winCondition() {
+        return smiley.getPositionX() == 150 && smiley.getPositionY() == 24;
     }
 
 
