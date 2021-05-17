@@ -5,8 +5,7 @@ import ch.bbw.gameboy.api.PixelGraphic;
 
 import java.util.List;
 
-public class Ground extends GameObject {
-
+public class Ground extends GameObject{
     public Ground(PixelGraphic graphic, int x2, int y2) {
 
         var ground_data = List.of(List.of(
